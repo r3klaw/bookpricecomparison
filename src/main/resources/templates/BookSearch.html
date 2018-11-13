@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>BookSearch</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+    <script th:src="@{/js/jquery.shorten.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/self.css}"/>
+    <script>
+        $(function() {
+            $('.book-description').shorten({
+                moreText: 'more',
+                lessText: 'less'
+            })
+        })
+    </script>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+            <form method="get" action="bookSearch">
+                <div class="input-field">
+                    <input id="search" type="search" required="required" name="query" />
+                    <label id="search-label" class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+
+    <div class="row" th:each="bookList:${bookListList}">
+        <div class="col s12 m7" th:each="book:${bookList}">
+            <div class="card">
+                <div class="card-image">
+                    <!--<img class="book-image center-block" th:src="${book.imageUrl}" />-->
+                    <img class="materialboxed center-block" th:data-caption="${book.title}" height="350px" width="auto" th:src="${book.imageUrl}" />
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                </div>
+                <!--<div class="card-image">-->
+                    <!--<img th:src="${book.imageUrl}" />-->
+                    <!--<span class="card-title" th:text="${book.title}" />-->
+                <!--</div>-->
+                <div class="card-content">
+                    <span class="card-title" th:text="${book.title}" />
+                    <p class="book-description text-justify" th:text="${book.description}" />
+                </div>
+                <div class="card-action">
+                    <a th:href="${book.link}" target="_blank">Goodread</a>
+                    <a href="#" class="compareLink modal-trigger" data-target="bookStoreModal" th:attr="isbn=${book.isbn13}, id=${book.id}">Price Comparison</a>
+                </div>
+            </div>
+        </div>
+        <!--<div class="col s12 m7">-->
+            <!--<div class="card">-->
+                <!--<div class="card-image">-->
+                    <!--<img src="images/sample-1.jpg" />-->
+                    <!--<span class="card-title">Card Title</span>-->
+                <!--</div>-->
+                <!--<div class="card-content">-->
+                    <!--<p>I am a very simple card. I am good at containing small bits of information.-->
+                        <!--I am convenient because I require little markup to use effectively.</p>-->
+                <!--</div>-->
+                <!--<div class="card-action">-->
+                    <!--<a href="#">This is a link</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col s12 m7">-->
+            <!--<div class="card">-->
+                <!--<div class="card-image">-->
+                    <!--<img src="images/sample-1.jpg" />-->
+                    <!--<span class="card-title">Card Title</span>-->
+                <!--</div>-->
+                <!--<div class="card-content">-->
+                    <!--<p>I am a very simple card. I am good at containing small bits of information.-->
+                        <!--I am convenient because I require little markup to use effectively.</p>-->
+                <!--</div>-->
+                <!--<div class="card-action">-->
+                    <!--<a href="#">This is a link</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <div id="bookStoreModal" class="modal">
+        <div class="modal-content text-center">
+            <!--<h4>Modal Header</h4>-->
+
+            <div id="modal-header">
+                <table>
+                    <tr>
+                        <td rowspan="7"><img id="modal-image" /></td>
+                        <td>Title: </td>
+                        <td><span id="modal-name"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Author: </td>
+                        <td><div id="modal-author"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Publisher: </td>
+                        <td><span id="modal-publisher"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Pages: </td>
+                        <td><span id="modal-pages"></span></td>
+                    </tr>
+                    <tr>
+                        <td>ISBN10: </td>
+                        <td><span id="modal-isbn10"></span></td>
+                    </tr>
+                    <tr>
+                        <td>ISBN13: </td>
+                        <td><span id="modal-isbn13"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Description: </td>
+                        <td><span id="modal-description" class="text-justify"></span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="loader">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            $('.modal').modal();
+
+
+            $('.compareLink').click(function() {
+                var body = JSON.stringify({"isbn": $(this).attr('isbn'), "id": $(this).attr('id')});
+                $('#loader').show();
+                $('.bookStores').remove();
+                $('#modal-header').hide();
+                $('#bookStoreModal').modal('open');
+                $.ajax({
+                    url: 'priceComparison',
+                    type: "POST",
+                    data: body,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response){
+                        displayBookStore(response);
+                        $('#loader').hide();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+
+                    }
+                });
+
+            });
+
+            function displayBookStore(response) {
+
+                $('#modal-header').show();
+
+                $('#modal-image').attr("src", response.imageUrl);
+                $('#modal-name').text(response.title);
+                $('#modal-description').html(response.description);
+                $('#modal-isbn10').text(response.isbn);
+                $('#modal-isbn13').text(response.isbn13);
+                $('#modal-pages').text(response.numPages);
+                $('#modal-publisher').text(response.publisher);
+
+                $('#modal-author').empty();
+                $.each(response.authors, function(index, value) {
+                    var chip = $('<div/>', {"class": "chip"});
+                    var authorImage = $('<img/>', {src: value.smallImageUrl});
+
+                    chip.text(value.name);
+                    chip.append(authorImage);
+                    $('#modal-author').append(chip)
+                });
+
+                var bookStores = response.bookPrices;
+                if (bookStores.length > 0) {
+
+                    var bookStoresUl = $('<ul/>', { "class": 'bookStores collection' });
+                    $.each(bookStores, function(index, value) {
+                        var item = $('<li/>', { "class": 'collection-item avatar bookStore' });
+                        item.hover(function() {
+                            $(this).css("background-color", "#dcdfe3")
+                        }, function() {
+                            $(this).css("background-color", "#ffffff")
+                        });
+                        item.click(function() {
+                            window.open(value.link, '_blank');
+                        });
+                        var image = $('<img/>', { src: value.imageLink, alt: "", "class": "circle" });
+                        var bookStore = $('<span/>', { "class": "title", text: value.store });
+                        var price = $('<p/>', {text: "RM " + value.price});
+                        item.append(image);
+                        item.append(bookStore);
+                        item.append(price);
+                        bookStoresUl.append(item)
+                    });
+                    $('#bookStoreModal').append(bookStoresUl)
+                } else {
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

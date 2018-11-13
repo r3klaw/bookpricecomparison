@@ -1,0 +1,42 @@
+#search-bar {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+
+.centered {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+.book-image {
+    height: 350px !important;
+    width: auto !important;
+    padding: 30px;
+}
+
+.bookStore:hover {
+    cursor: pointer;
+    background-color: #9F9F9F;
+}
+
+#modal-header td {
+    padding: 5px 5px;
+    vertical-align: top;
+}
+
+#modal-image {
+    width: 300px;
+    height: auto;
+    padding-right: 20px;
+}
+
+#search-label {
+    top: -10px;
+}
