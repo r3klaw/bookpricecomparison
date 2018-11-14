@@ -54,6 +54,7 @@
                     <p class="book-description text-justify" th:text="${book.description}" />
                 </div>
                 <div class="card-action">
+                    <!--/*@thymesVar id="link" type=""*/-->
                     <a th:href="${book.link}" target="_blank">Goodread</a>
                     <a href="#" class="compareLink modal-trigger" data-target="bookStoreModal" th:attr="isbn=${book.isbn13}, id=${book.id}">Price Comparison</a>
                 </div>

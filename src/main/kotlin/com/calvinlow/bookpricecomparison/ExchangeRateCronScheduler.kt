@@ -7,21 +7,19 @@ import org.apache.http.util.EntityUtils
 import org.apache.http.client.methods.HttpGet
 import org.json.JSONObject
 import org.springframework.beans.factory.annotation.Autowired
-import java.io.ByteArrayInputStream
-import java.io.InputStream
 import java.util.*
-import javax.xml.transform.stream.StreamSource
 
 
 @Component
 class ExchangeRateCronScheduler {
 
-    val ACCESS_KEY = "7b46a89922488ab1fa0adf90cfd4349e"
+    val ACCESS_KEY = "e2b00f4dc6c22b492a991cf9c04f7f32"
     val BASE_URL = "http://apilayer.net/api/"
     val ENDPOINT = "live"
 
     val SOURCE = "USD"
-    val TARGET = "MYR"
+    val TARGET: String
+        get() = "EUR"
     var httpClient = HttpClients.createDefault()!!
 
     @Autowired

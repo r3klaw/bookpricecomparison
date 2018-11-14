@@ -26,7 +26,7 @@ class ScrappingService {
 
     val BOOKXCESS_URL = "http://www.bookxcessonline.com/index.php?route=product/search&search="
 
-    val GOODREADS_DEVELOPER_KEY = "YOUR_GOODREADS_DEVELOPER_KEY"
+    val GOODREADS_DEVELOPER_KEY = "FO8bBv2adx67FR6s2FZRg"
 
     val GOODREADS_URL = "https://www.goodreads.com/search/index.xml?key=$GOODREADS_DEVELOPER_KEY"
 
