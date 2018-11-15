@@ -1,6 +1,6 @@
-package com.calvinlow.bookpricecomparison.goodreadsmodel
+package com.r3klaw.bookpricecomparison.goodreadsmodel
 
-import com.calvinlow.bookpricecomparison.BookPrice
+import com.r3klaw.bookpricecomparison.BookPrice
 import com.fasterxml.jackson.annotation.JsonView
 import java.util.ArrayList
 import javax.xml.bind.annotation.*

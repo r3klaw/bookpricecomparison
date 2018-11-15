@@ -1,5 +1,5 @@
 //===============================================================================
-// Copyright (c) 2010 Adam C Jones
+// Copyright (c) 2018 David Rashid
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,44 +20,40 @@
 // THE SOFTWARE.
 //===============================================================================
 
-package com.calvinlow.bookpricecomparison.goodreadsmodel
+package com.r3klaw.bookpricecomparison.goodreadsmodel
 
 import java.io.Serializable
-import java.util.ArrayList
-import javax.xml.bind.annotation.*
+import javax.xml.bind.annotation.XmlAccessType
+import javax.xml.bind.annotation.XmlAccessorType
+import javax.xml.bind.annotation.XmlElement
+import javax.xml.bind.annotation.XmlRootElement
 
-@XmlRootElement(name = "search")
+@XmlRootElement(name = "best_book")
 @XmlAccessorType(XmlAccessType.NONE)
-class Search : Serializable {
+class BestBook : Serializable {
 
-    @XmlElement(name = "query")
-    var query: String? = null
+    @XmlElement(name = "id")
+    var id: Int = 0
 
-    @XmlElement(name = "results-start")
-    var resultsStart: Int = 0
+    @XmlElement(name = "title")
+    var title: String? = null
 
-    @XmlElement(name = "results-end")
-    var resultsEnd: Int = 0
+    @XmlElement(name = "author")
+    var author = Author()
 
-    @XmlElement(name = "total-results")
-    var totalResults: Int = 0
+    @XmlElement(name = "image_url")
+    var imageUrl: String? = null
 
-    @XmlElement(name = "source")
-    var source: String? = null
-
-    @XmlElement(name = "query-time-seconds")
-    var queryTime: Float = 0.toFloat()
-
-    @XmlElementWrapper(name = "results")
-    @XmlElement(name = "work")
-    var results: ArrayList<Work>? = null
+    @XmlElement(name = "small_image_url")
+    var smallImageUrl: String? = null
 
     companion object {
         private const val serialVersionUID = 0L
     }
 
     override fun toString(): String {
-        return "Search(query=$query, resultsStart=$resultsStart, resultsEnd=$resultsEnd, totalResults=$totalResults, source=$source, queryTime=$queryTime, results=$results)"
+        return "BestBook(id=$id, title=$title, author=$author, imageUrl=$imageUrl, smallImageUrl=$smallImageUrl)"
     }
+
 
 }

@@ -1,4 +1,4 @@
-package com.calvinlow.bookpricecomparison
+package com.r3klaw.bookpricecomparison
 
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -1,6 +1,6 @@
-package com.calvinlow.bookpricecomparison
+package com.r3klaw.bookpricecomparison
 
-import com.calvinlow.bookpricecomparison.goodreadsmodel.Book
+import com.r3klaw.bookpricecomparison.goodreadsmodel.Book
 import com.fasterxml.jackson.annotation.JsonView
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

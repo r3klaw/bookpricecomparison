@@ -1,4 +1,4 @@
-package com.calvinlow.bookpricecomparison.goodreadsmodel
+package com.r3klaw.bookpricecomparison.goodreadsmodel
 
 import javax.xml.bind.annotation.XmlElement
 import javax.xml.bind.annotation.XmlRootElement

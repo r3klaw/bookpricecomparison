@@ -1,11 +1,11 @@
-package com.calvinlow.bookpricecomparison
+package com.r3klaw.bookpricecomparison
 
-import com.calvinlow.bookpricecomparison.goodreadsmodel.GoodreadsResponse
+import com.r3klaw.bookpricecomparison.goodreadsmodel.GoodreadsResponse
 import org.springframework.web.bind.annotation.RestController
 import java.io.StringReader
 import javax.xml.bind.JAXBContext
-import com.calvinlow.bookpricecomparison.goodreadsmodel.Book
-import com.calvinlow.bookpricecomparison.goodreadsmodel.Work
+import com.r3klaw.bookpricecomparison.goodreadsmodel.Book
+import com.r3klaw.bookpricecomparison.goodreadsmodel.Work
 import com.google.common.collect.Lists
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document

@@ -20,40 +20,44 @@
 // THE SOFTWARE.
 //===============================================================================
 
-package com.calvinlow.bookpricecomparison.goodreadsmodel
+package com.r3klaw.bookpricecomparison.goodreadsmodel
 
 import java.io.Serializable
-import javax.xml.bind.annotation.XmlAccessType
-import javax.xml.bind.annotation.XmlAccessorType
-import javax.xml.bind.annotation.XmlElement
-import javax.xml.bind.annotation.XmlRootElement
+import java.util.ArrayList
+import javax.xml.bind.annotation.*
 
-@XmlRootElement(name = "best_book")
+@XmlRootElement(name = "search")
 @XmlAccessorType(XmlAccessType.NONE)
-class BestBook : Serializable {
+class Search : Serializable {
 
-    @XmlElement(name = "id")
-    var id: Int = 0
+    @XmlElement(name = "query")
+    var query: String? = null
 
-    @XmlElement(name = "title")
-    var title: String? = null
+    @XmlElement(name = "results-start")
+    var resultsStart: Int = 0
 
-    @XmlElement(name = "author")
-    var author = Author()
+    @XmlElement(name = "results-end")
+    var resultsEnd: Int = 0
 
-    @XmlElement(name = "image_url")
-    var imageUrl: String? = null
+    @XmlElement(name = "total-results")
+    var totalResults: Int = 0
 
-    @XmlElement(name = "small_image_url")
-    var smallImageUrl: String? = null
+    @XmlElement(name = "source")
+    var source: String? = null
+
+    @XmlElement(name = "query-time-seconds")
+    var queryTime: Float = 0.toFloat()
+
+    @XmlElementWrapper(name = "results")
+    @XmlElement(name = "work")
+    var results: ArrayList<Work>? = null
 
     companion object {
         private const val serialVersionUID = 0L
     }
 
     override fun toString(): String {
-        return "BestBook(id=$id, title=$title, author=$author, imageUrl=$imageUrl, smallImageUrl=$smallImageUrl)"
+        return "Search(query=$query, resultsStart=$resultsStart, resultsEnd=$resultsEnd, totalResults=$totalResults, source=$source, queryTime=$queryTime, results=$results)"
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.calvinlow.bookpricecomparison
+package com.r3klaw.bookpricecomparison
 
 import java.util.*
 import javax.persistence.*

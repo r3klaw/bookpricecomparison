@@ -1,4 +1,4 @@
-package com.calvinlow.bookpricecomparison
+package com.r3klaw.bookpricecomparison
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository

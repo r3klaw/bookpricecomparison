@@ -1,4 +1,4 @@
-package com.calvinlow.bookpricecomparison
+package com.r3klaw.bookpricecomparison
 
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
@@ -47,7 +47,7 @@ class ExchangeRateCronScheduler {
 
         val timeStampDate = Date((exchangeRates.getLong("timestamp") * 1000))
 
-        // Get USDMYR
+        // Get EUR
         val rate = exchangeRates.getJSONObject("quotes").getDouble("$SOURCE$TARGET")
 
         response.close()

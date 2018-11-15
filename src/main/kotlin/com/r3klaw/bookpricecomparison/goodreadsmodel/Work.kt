@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 //===============================================================================
 
-package com.calvinlow.bookpricecomparison.goodreadsmodel
+package com.r3klaw.bookpricecomparison.goodreadsmodel
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import java.io.Serializable
